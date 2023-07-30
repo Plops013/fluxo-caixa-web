@@ -1,0 +1,59 @@
+.container {
+    background-color: white;
+
+    width: 100%;
+  
+    padding: 24px;
+    border-radius: 12px;
+    
+}
+
+.resume {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 33%;
+    }
+    
+    .label {
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .value {
+        border: 1px solid gainsboro;
+        font-weight: 600;
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-size: 32px;
+        text-align: center;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .credit {
+        color: rgba(0, 100, 0, 0.8);
+    }
+
+    .debit {
+        color: rgba(120, 0, 0, 0.8);
+    }
+
+    .total {
+        color: black;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+
+        &__item {
+            width: 100%;
+        }
+    }
+}

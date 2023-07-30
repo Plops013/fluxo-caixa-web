@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="resume">
+    <div class="resume__item credit">
+      <p class="label">Receitas</p>
+      <p class="value">{{ receipt | currency: 'BRL': 'R$: '}}</p>
+    </div>
+    <div class="resume__item debit">
+      <p class="label">Despesas</p>
+      <p class="value">{{ expense | currency: 'BRL': 'R$: '}}</p>
+    </div>
+    <div class="resume__item total">
+      <p class="label">Consolidação</p>
+      <p class="value">{{ balance | currency: 'BRL': 'R$: '}}</p>
+    </div>
+  </div>
+</div>

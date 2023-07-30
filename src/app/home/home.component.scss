@@ -1,0 +1,142 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  flex: 1 1 100%;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  gap: 48px;
+
+  &__item {
+    background-color: white;
+    border-radius: 24px;
+    border: 1px solid gainsboro;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+
+    width: 200px;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    gap: 24px;
+    position: relative;
+
+    transition-duration: 0.25s;
+    animation: popUp 0.5s ease-in-out;
+
+    &:hover:not(.disabled) {
+      .menu__label {
+        height: 0px;
+        opacity: 0;
+      }
+
+      .menu__icon {
+        width: 128px;
+        height: 128px;
+        margin-top: 24px;
+      }
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      animation: popUpDisabled 0.5s ease-in-out;
+      cursor: not-allowed;
+      filter: grayscale(100%);
+    }
+  
+    .new::before {
+      content: "NOVO";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: green;
+      color: white;
+      padding: 6px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      height: 10px;
+      z-index: 999;
+
+      animation-delay: 0.25s;
+      animation: popIn 0.55s ease-in-out;
+    }
+
+    .wip::before {
+      content: "EM BREVE";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: red;
+      color: white;
+      padding: 6px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      height: 10px;
+      z-index: 999;
+    }
+  }
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    transition-duration: 0.25s;
+  }
+
+  &__label {
+    font-size: 18px;
+    font-weight: 800;
+    width: fit-content;
+    color: black;
+    transition-duration: 0.1s;
+    height: 20px;
+  }
+
+  @media (max-width: 768px) {
+    gap: 24px;
+    flex-direction: column;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: translateX(25px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes popUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes popUpDisabled {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.5;
+  }
+}

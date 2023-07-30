@@ -1,0 +1,15 @@
+<div class="container">
+  <h2 class="title">Movimento {{ parsePeriod(selectedPeriod)}}</h2>
+  <fc-flow-resume
+    [receipt]="receipt"
+    [expense]="expense"
+    [balance]="balance"
+  ></fc-flow-resume>
+  <h2 class="title">Lançamentos</h2>
+  <fc-flow-form (formSubmit)="addItem($event)"></fc-flow-form>
+  <fc-flow-list
+    [flowList]="flowList"
+    (filter)="selectedPeriodFilter($event)"
+    (delete)="deleteItem($event)"
+  ></fc-flow-list>
+</div>

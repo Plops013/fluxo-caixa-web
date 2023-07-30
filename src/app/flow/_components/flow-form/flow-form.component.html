@@ -1,0 +1,53 @@
+<form [formGroup]="flowForm" #form="ngForm" class="form">
+  <div
+    class="form__input form__input--name"
+    [ngClass]="{
+      error: flowForm.get('name')?.invalid && flowForm.get('name')?.touched
+    }"
+  >
+    <label for="name">Descrição</label>
+    <input
+      placeholder="Venda de produto X"
+      type="text"
+      id="name"
+      name="name"
+      formControlName="name"
+    />
+    <p
+      class="form__error"
+      *ngIf="flowForm.get('name')?.invalid && flowForm.get('name')?.touched"
+    >
+      O campo descrição é obrigatório
+    </p>
+  </div>
+  <div
+    class="form__input"
+    [ngClass]="{
+      error: flowForm.get('value')?.invalid && flowForm.get('value')?.touched
+    }"
+  >
+    <label for="value">Valor</label>
+    <input
+      placeholder="399,99"
+      formControlName="value"
+      type="number"
+      id="value"
+      name="value"
+    />
+    <p
+      class="form__error"
+      *ngIf="flowForm.get('value')?.invalid && flowForm.get('value')?.touched"
+    >
+      O campo valor é obrigatório
+    </p>
+  </div>
+
+  <div class="form__input">
+    <label for="type">Tipo</label>
+    <select id="type" name="type" formControlName="type">
+      <option value="CREDITO">Crédito</option>
+      <option value="DEBITO">Débito</option>
+    </select>
+  </div>
+  <a class="form__button" [attr.disabled]="flowForm.invalid" (click)="onSubmit()">Adicionar</a>
+</form>

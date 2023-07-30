@@ -1,0 +1,71 @@
+<div class="table">
+  <div class="filter">
+    <div
+      class="filter__pill"
+      [ngClass]="{ selected: selectedFilter === 'DIARIO' }"
+      (click)="onSelectFilter(Period.DIARIO)"
+    >
+      Diário
+    </div>
+    <div
+      class="filter__pill"
+      [ngClass]="{ selected: selectedFilter === 'SEMANAL' }"
+      (click)="onSelectFilter(Period.SEMANAL)"
+    >
+      Semanal
+    </div>
+    <div
+      class="filter__pill"
+      [ngClass]="{ selected: selectedFilter === 'MENSAL' }"
+      (click)="onSelectFilter(Period.MENSAL)"
+    >
+      Mensal
+    </div>
+    <div
+      class="filter__pill"
+      [ngClass]="{ selected: selectedFilter === 'ANUAL' }"
+      (click)="onSelectFilter(Period.ANUAL)"
+    >
+      Anual
+    </div>
+  </div>
+  <table *ngIf="flowList.length > 0; else empty">
+    <thead>
+      <th>Data</th>
+      <th>Nome</th>
+      <th>Valor</th>
+      <th class="type">Tipo</th>
+      <th>Ação</th>
+    </thead>
+    <tbody>
+      <tr
+        [ngClass]="{
+          odd: i % 2 !== 0,
+          debit: item.type.toString() === 'DEBITO'
+        }"
+        *ngFor="let item of flowList; index as i"
+      >
+        <td>
+          {{ item.date | date : "dd/MM/yy HH:mm" }}
+        </td>
+        <td>
+          {{ item.name }}
+        </td>
+        <td>
+          {{ item.value | currency : "BRL" }}
+        </td>
+        <td class="type">
+          {{ item.type }}
+        </td>
+        <td>
+          <a class="delete-button" (click)="onDelete(item.id)"
+            ><img src="https://img.icons8.com/?size=512&id=14237&format=png"
+          /></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #empty>
+    <p class="empty">Nenhum lançamento cadastrado.</p>
+  </ng-template>
+</div>
