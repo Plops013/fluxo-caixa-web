@@ -10,7 +10,7 @@
           "style": "scss"
         }
       },
-      "root": "",
+      "root": "/",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
@@ -36,6 +36,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/fluxo-caixa-web",
               "budgets": [
                 {
                   "type": "initial",
